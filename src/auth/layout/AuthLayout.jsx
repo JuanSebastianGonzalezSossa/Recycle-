@@ -1,37 +1,36 @@
 import { Grid, Typography } from '@mui/material';
-import { NavBar } from '../components'
+import { Navbar } from '../components/Navbar';
 
 
 export const AuthLayout = ({ children, title = '' }) => {
   return (
-
+    
     <Grid
       container
-      spacing={0}
+      spacing={ 0 }
       direction="column"
       alignItems="center"
       justifyContent="center"
       sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
     >
-
-      <NavBar />
+      <Navbar/>
 
       <Grid item
-        className='box-shadow'
-        xs={3}
-        sx={{
-          width: { sm: 450 },
-          backgroundColor: 'white',
-          padding: 3,
-          borderRadius: 2
+       className='box-shadow'
+       xs={ 3 }
+       sx={{ 
+            width: { sm: 450 },
+            backgroundColor: 'white', 
+            padding: 3, 
+            borderRadius: 2 
         }}>
+          
+          <Typography variant='h5' sx={{ mb: 1 }}>{ title }</Typography>
 
-        <Typography variant='h5' sx={{ mb: 1 }}>{title}</Typography>
+            
+            { children }
 
-
-        {children}
-
-      </Grid>
+        </Grid>
 
     </Grid>
 

@@ -1,10 +1,11 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import { NavBar } from '../components'
+import { Navbar } from '../components/Navbar'
 
 export const HomePage = () => {
     return (
         <Grid
+            className='animate__animated animate__fadeIn animate__faster'
             container
             spacing={0}
             direction="column"
@@ -13,10 +14,10 @@ export const HomePage = () => {
             sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4 }}
         >
 
-        <NavBar/>
+            <Navbar />
 
-        {/* Aca va a trabajar Nia */}
-        
+            {/* Aca va a trabajar Nia */}
+
         </Grid>
     )
 }

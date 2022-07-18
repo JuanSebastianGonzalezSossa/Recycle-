@@ -3,7 +3,7 @@ import { AppBar, Grid, Link, IconButton, Toolbar, Typography } from '@mui/materi
 import { MenuOutlined } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-export const NavBar = () => {
+export const Navbar = () => {
     return (
         <AppBar
             position='fixed'
@@ -19,7 +19,7 @@ export const NavBar = () => {
                 </IconButton>
 
                 <Grid container direction='row' justifyContent='space-between' alignItems='center'>
-                    <Link component={RouterLink} style={{ textDecoration: 'none' }} color='inherit' to="/auth">
+                    <Link component={RouterLink} style={{ textDecoration: 'none' }} color='inherit' to="/auth" >
                         <Typography variant='h6' className='Logo' noWrap component='div' > RecycleApp </Typography>
                     </Link>
 

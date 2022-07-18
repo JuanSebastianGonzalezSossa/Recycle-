@@ -2,12 +2,11 @@ import { Toolbar } from '@mui/material';
 import { Box } from '@mui/system'
 import { NavBar } from '../components';
 
-
-export const JournalLayout = ({ children }) => {
+export const RecycleLayout = ({ children }) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} className='animate__animated animate__fadeIn animate__faster'>
 
-        <NavBar />
+        <NavBar/>
 
         <Box 
             component='main'

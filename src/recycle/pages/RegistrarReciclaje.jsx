@@ -1,12 +1,16 @@
 import { Save } from '@mui/icons-material'
 import { Grid, IconButton, Link, TextField, Typography } from '@mui/material'
 import React from 'react'
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { useForm } from '../../hooks'
 import { NavBar } from '../components'
 import SettingsIcon from '@mui/icons-material/Settings';
+import { PeticionPost } from '../../servicios/PeticionPost';
 
 export const RegistrarReciclaje = () => {
+
+  let { id, nombreDirector, numEstudiantes} = useParams();
+  
 
   const { papel, carton, plastico, onInputChange } = useForm({
     papel: '',
@@ -14,8 +18,10 @@ export const RegistrarReciclaje = () => {
     plastico: '',
   });
 
+
   const onSubmit = (event) => {
     event.preventDefault();
+    PeticionPost(`http://localhost:80/reciclaje/add`, {pesoPlastico: plastico, pesoPapel: papel, pesoCarton: carton, grado: id} );
     console.log(papel, carton, plastico);
   }
 
@@ -25,16 +31,16 @@ export const RegistrarReciclaje = () => {
       <NavBar />
 
       <Grid container direction='row' justifyContent='space-evenly' style={{ marginTop: '200px' }}>
-        <Typography variant='h4' noWrap component='div'> Grado </Typography>
-        <Typography variant='h6' noWrap component='div'> Director de grupo </Typography>
-        <Typography variant='h6' noWrap component='div'> Cantidad de estudiantes </Typography>
+        <Typography variant='h4' noWrap component='div'> {id} </Typography>
+        <Typography variant='h6' noWrap component='div'> {nombreDirector} </Typography>
+        <Typography variant='h6' noWrap component='div'> {numEstudiantes} </Typography>
       </Grid>
 
       <form onSubmit={onSubmit}>
         <Grid container direction='column' className="Formulario" alignItems='center' style={{ margin: '160px', maxHeight: '620px', maxWidth: '500px', borderRadius: '20px' }} >
           <Grid container direction='row' justifyContent='space-evenly' style={{ marginTop: '30px' }}>
             <Typography variant='h4' noWrap component='div' > Registrar reciclaje </Typography>
-            <Link component={RouterLink} style={{ textDecoration: 'none' }} variant='h6' color='inherit' to="/RegistrarReciclaje/Configuracion">
+            <Link component={RouterLink} style={{ textDecoration: 'none' }} variant='h6' color='inherit' to={`/registrarReciclaje/Configuracion/${id}/${nombreDirector}/${numEstudiantes}`}>
               <IconButton>
                 <SettingsIcon/>
               </IconButton>

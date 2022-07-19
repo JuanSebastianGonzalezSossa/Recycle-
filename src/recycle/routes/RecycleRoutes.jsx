@@ -8,9 +8,8 @@ export const RecycleRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={ <RecyclePage /> } />
-        <Route path="/RegistrarReciclaje" element={ <RegistrarReciclaje /> } />
-        <Route path="/RegistrarReciclaje/Configuracion" element={ <RecycleSettings /> } />
-
+        <Route path="/RegistrarReciclaje/:id/:nombreDirector/:numEstudiantes" element={ <RegistrarReciclaje /> } />
+        <Route path="/RegistrarReciclaje/Configuracion/:id/:nombreDirector/:numEstudiantes" element={ <RecycleSettings /> } />
         <Route path="/*" element={ <Navigate to="/" /> } />
     </Routes>
   )

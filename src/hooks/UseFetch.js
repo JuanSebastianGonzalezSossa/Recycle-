@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 
-export const useFetch = ( url ) => {
+export const useFetch = (url) => {
 
     const [state, setState] = useState({
         data: null,
@@ -18,6 +18,13 @@ export const useFetch = ( url ) => {
         });
 
         const resp = await fetch(url);
+        // , {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "text/plain"
+        //     },
+        //     mode: 'no-cors'
+        // }
         const data = await resp.json();
 
         setState({
@@ -31,12 +38,12 @@ export const useFetch = ( url ) => {
     useEffect(() => {
         getFetch();
     }, [url])
-    
+
 
 
     return {
-        data:      state.data,
+        data: state.data,
         isLoading: state.isLoading,
-        hasError:  state.hasError,
+        hasError: state.hasError,
     };
 }

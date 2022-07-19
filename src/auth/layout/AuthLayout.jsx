@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material';
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../components/NavBar';
 
 
 export const AuthLayout = ({ children, title = '' }) => {

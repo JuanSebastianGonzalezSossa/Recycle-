@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 import './styleModal.css'
 import { Cancel, Save } from '@mui/icons-material';
 import { useUiStore } from '../../hooks/UseUIStore';
+import { PeticionPost } from '../../servicios/PeticionPost';
+import { useEffect } from 'react';
 
 // const customStyles = {
 //     content: {
@@ -24,13 +26,14 @@ export const ModalRegistrarSalon = () => {
     const { isSalonModalOpen, closeSalonModal } = useUiStore();
 
     const { grado, dirGrado, cantEstudiantes, onInputChange } = useForm({
-        grupo: '',
-        dirGrupo: '',
+        grado: '',
+        dirGrado: '',
         cantEstudiantes: '',
     });
 
     const onSubmit = ( event ) => {
         event.preventDefault();
+        PeticionPost(`http://localhost:80/salon/add?id=${grado}`, {nombreDirector: dirGrado, numEstudiantes: cantEstudiantes} );
         console.log("Petición Post a la API ", grado, dirGrado, cantEstudiantes);
       }
 
@@ -39,6 +42,7 @@ export const ModalRegistrarSalon = () => {
         closeSalonModal();
     }
 
+   
     return (
         <Modal
             isOpen={isSalonModalOpen}

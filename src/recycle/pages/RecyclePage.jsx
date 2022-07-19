@@ -5,12 +5,13 @@ import { IconButton } from '@mui/material';
 import { ModalRegistrarSalon } from '../views/ModalRegistrarSalon';
 import { useUiStore } from '../../hooks/UseUIStore';
 import { useFetch } from '../../hooks/UseFetch';
+import { SalonesGrid } from '../views/SalonesGrid';
 
 export const RecyclePage = () => {
 
-  const { data, isLoading, hasError } = useFetch('https://www.breakingbadapi.com/api/quotes/1'); 
+  const { data, isLoading, hasError } = useFetch('http://localhost:80/salon/list');
 
-  console.log({data, isLoading, hasError})
+  console.log({ data, isLoading, hasError })
 
   const { openSalonModal } = useUiStore();
 
@@ -35,15 +36,15 @@ export const RecyclePage = () => {
   return (
     <RecycleLayout>
 
-      
-      <NothingSelectedView />
+      {data ? <SalonesGrid data={data}/>
+      : <NothingSelectedView /> }
 
       <IconButton
         size='large'
         sx={{
-          color: 'purple',
-          backgroundColor: 'white',
-          ':hover': { backgroundColor: 'white', opacity: 0.9 },
+          color: 'white',
+          backgroundColor: 'purple',
+          ':hover': { backgroundColor: 'purple', opacity: 0.9 },
           position: 'fixed',
           right: 50,
           bottom: 50
@@ -56,7 +57,7 @@ export const RecyclePage = () => {
 
       <ModalRegistrarSalon />
 
-    </RecycleLayout>
+    </RecycleLayout >
   )
 
 }

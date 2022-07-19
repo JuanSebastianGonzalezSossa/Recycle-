@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import { Navbar } from '../components/Navbar'
+import { Navbar } from '../components/NavBar'
 
 export const HomePage = () => {
     return (

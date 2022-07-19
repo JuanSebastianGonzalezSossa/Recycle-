@@ -5,11 +5,12 @@ import Modal from 'react-modal';
 import './styleModal.css'
 import { Cancel, Save } from '@mui/icons-material';
 import { useUiStore } from '../../hooks/UseUIStore';
+import { PeticionPost } from '../../servicios/PeticionPost';
 
 
 Modal.setAppElement('#root');
 
-export const ModalEditarReciclaje = () => {
+export const ModalEditarReciclaje = ({id}) => {
 
     const { isEditModalOpen, closeEditModal } = useUiStore();
 
@@ -21,7 +22,8 @@ export const ModalEditarReciclaje = () => {
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log("Petición Post a la API ", papel, carton, plastico);
+        PeticionPost(`http://localhost:80/reciclaje/edit?id=${id}`, {pesoPlastico: plastico, pesoPapel: papel, pesoCarton: carton} );
+        console.log("Petición Post a la API ", id);
       }
 
       const onCloseModal = () => {

@@ -2,19 +2,10 @@ import React from 'react'
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material';
 import { useUiStore } from '../../hooks/UseUIStore';
+import { ModalEditarReciclaje } from '../views/ModalEditarReciclaje';
+import { ModalDeleteReciclaje } from '../views/ModalDeleteReciclaje';
 
-export const TableEditRecycle = () => {
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-    }
-
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-    ];
+export const TableEditRecycle = ({data}) => {
 
     const { openEditModal, openDeleteModal, isDeleteModalOpen } = useUiStore();
 
@@ -43,15 +34,18 @@ export const TableEditRecycle = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {!data ? null :data.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center">{row.calories}</TableCell>
-                            <TableCell align="center">{row.fat}</TableCell>
-                            <TableCell align="center">{row.carbs}</TableCell>
+                            <TableCell align="center">{row.pesoPapel}</TableCell>
+                            <TableCell align="center">{row.pesoCarton}</TableCell>
+                            <TableCell align="center">{row.pesoPlastico}</TableCell>
                             <TableCell align="center">
+
+                            <ModalEditarReciclaje id={row.id} />
+                            <ModalDeleteReciclaje id={row.id} />
                                 <IconButton
                                     onClick={onOpenEditModal}
                                 >
@@ -67,6 +61,7 @@ export const TableEditRecycle = () => {
                     ))}
                 </TableBody>
             </Table>
+            
         </TableContainer>
     )
 }

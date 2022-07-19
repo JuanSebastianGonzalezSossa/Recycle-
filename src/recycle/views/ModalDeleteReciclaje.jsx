@@ -2,6 +2,7 @@ import { Grid, IconButton, Typography } from '@mui/material';
 import React from 'react';
 import Modal from 'react-modal';
 import { useUiStore } from '../../hooks/UseUIStore';
+import { PeticionDelete } from '../../servicios/PeticionDelete';
 
 
 const customStyles = {
@@ -20,15 +21,16 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const ModalDeleteReciclaje = () => {
+export const ModalDeleteReciclaje = ({id}) => {
 
     const { isDeleteModalOpen, closeDeleteModal } = useUiStore();
 
 
-    const onSubmit = (event) => {
+    const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log("Petición Post a la API ");
-    }
+        PeticionDelete(`http://localhost:80/reciclaje/delete?id=${id}`);
+        console.log("Petición Post a la API ", id);
+      }
 
     const onCloseModal = () => {
         console.log('Cerrando modal');
@@ -57,6 +59,7 @@ export const ModalDeleteReciclaje = () => {
                                 margin: '10px',
                                 fontSize: '18px',
                             }}
+                            type="submit"
                             onClick={onCloseModal}
                         >
                             Si
@@ -71,7 +74,6 @@ export const ModalDeleteReciclaje = () => {
                                 margin: '10px',
                                 fontSize: '18px',
                             }}
-                            type="submit"
                             onClick={onCloseModal}
                         >
                             No

@@ -13,15 +13,15 @@ export const ModalEditarReciclaje = () => {
 
     const { isEditModalOpen, closeEditModal } = useUiStore();
 
-    const { grado, dirGrado, cantEstudiantes, onInputChange } = useForm({
-        grupo: '',
-        dirGrupo: '',
-        cantEstudiantes: '',
+    const { papel, carton, plastico, onInputChange } = useForm({
+        papel: '',
+        carton: '',
+        plastico: '',
     });
 
     const onSubmit = ( event ) => {
         event.preventDefault();
-        console.log("Petición Post a la API ", grado, dirGrado, cantEstudiantes);
+        console.log("Petición Post a la API ", papel, carton, plastico);
       }
 
       const onCloseModal = () => {
@@ -38,19 +38,19 @@ export const ModalEditarReciclaje = () => {
     overlayClassName="modal-fondo"
     closeTimeoutMS={200}
 >
-    <Typography variant='h4' noWrap component='div'> Registrar salón </Typography>
+    <Typography variant='h4' noWrap component='div'> Editar registro </Typography>
     <hr />
     <form onSubmit={ onSubmit } className='animate__animated animate__fadeIn animate__faster'>
         <Grid container direction='column' justifyContent='center'>
             <Grid >
                 <Grid style={{ width: '100%', padding: '10px' }}>
                     <TextField
-                        label="Grado"
+                        label="Papel"
                         type="text"
-                        placeholder='10-B'
+                        placeholder='30'
                         fullWidth
-                        name="grado"
-                        value={grado}
+                        name="papel"
+                        value={papel}
                         onChange={onInputChange}
                     />
                 </Grid>
@@ -58,12 +58,12 @@ export const ModalEditarReciclaje = () => {
             <Grid >
                 <Grid style={{ width: '100%', padding: '10px' }}>
                     <TextField
-                        label="Director de grado"
+                        label="Cartón"
                         type="text"
-                        placeholder='Juan Fernando Restrepo'
+                        placeholder='20'
                         fullWidth
-                        name="dirGrado"
-                        value={dirGrado}
+                        name="carton"
+                        value={carton}
                         onChange={onInputChange}
                     />
                 </Grid>
@@ -71,12 +71,12 @@ export const ModalEditarReciclaje = () => {
             <Grid >
                 <Grid style={{ width: '100%', padding: '10px' }}>
                     <TextField
-                        label="Cantidad de estudiantes"
+                        label="Plástico"
                         type="number"
                         placeholder='30'
                         fullWidth
-                        name="cantEstudiantes"
-                        value={cantEstudiantes}
+                        name="plastico"
+                        value={plastico}
                         onChange={onInputChange}
                     />
                 </Grid>
@@ -87,9 +87,9 @@ export const ModalEditarReciclaje = () => {
                         size='large'
                         sx={{
                             color: 'white',
-                            backgroundColor: 'purple',
-                            ':hover': { backgroundColor: 'purple', opacity: 0.8 },
-                            borderRadius: '50px',
+                            backgroundColor: 'red',
+                            ':hover': { backgroundColor: 'red', opacity: 0.8 },
+                            borderRadius: '10px',
                             margin: '10px',
                             fontSize: '18px',
                         }}
@@ -102,16 +102,16 @@ export const ModalEditarReciclaje = () => {
                         size='large'
                         sx={{
                             color: 'white',
-                            backgroundColor: 'purple',
-                            ':hover': { backgroundColor: 'purple', opacity: 0.8 },
-                            borderRadius: '50px',
+                            backgroundColor: 'green',
+                            ':hover': { backgroundColor: 'green', opacity: 0.8 },
+                            borderRadius: '10px',
                             margin: '10px',
                             fontSize: '18px',
                         }}
                         type="submit"
                         onClick={onCloseModal}
                     >
-                        Guardar &nbsp;
+                        Editar &nbsp;
                         <Save />
                     </IconButton>
                 </Grid>

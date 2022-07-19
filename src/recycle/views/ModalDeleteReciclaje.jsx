@@ -10,11 +10,11 @@ const customStyles = {
         color: 'rgb(51, 51, 51)',
         display: 'inline',
         height: '150px',
-        width: '700px',
+        width: '400px',
         outline: 'none',
         padding: '10px',
-        top: '35%',
-        left: '30%',
+        top: '40%',
+        left: '40%',
     },
 };
 
@@ -42,7 +42,7 @@ export const ModalDeleteReciclaje = () => {
             style={customStyles}
             closeTimeoutMS={200}
         >
-            <Typography variant='h4' noWrap component='div'> Seguro que desea eliminar este registro ? </Typography>
+            <Typography variant='h6' noWrap component='div'> Seguro que desea eliminar este registro ? </Typography>
             <hr />
             <form onSubmit={onSubmit} className='animate__animated animate__fadeIn animate__faster'>
                 <Grid container direction='column' justifyContent='center' >

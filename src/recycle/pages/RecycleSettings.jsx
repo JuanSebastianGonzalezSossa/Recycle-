@@ -2,10 +2,12 @@ import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { NavBar } from '../components'
 import { TableEditRecycle } from '../components/TableEditRecycle'
+import { ModalDeleteReciclaje } from '../views/ModalDeleteReciclaje'
+import { ModalEditarReciclaje } from '../views/ModalEditarReciclaje'
 
 export const RecycleSettings = () => {
 
-
+    
     return (
         <Grid container alignItems='center' className='animate__animated animate__fadeIn animate__faster'>
             <NavBar />
@@ -16,7 +18,9 @@ export const RecycleSettings = () => {
                 <Typography variant='h6' noWrap component='div'> Cantidad de estudiantes </Typography>
             </Grid>
 
-        <TableEditRecycle/>
+            <TableEditRecycle />
+            <ModalEditarReciclaje />
+            <ModalDeleteReciclaje/>
         </Grid>
     )
 }

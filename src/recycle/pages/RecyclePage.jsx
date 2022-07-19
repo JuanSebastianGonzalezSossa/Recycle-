@@ -4,19 +4,36 @@ import { NothingSelectedView } from '../views/NothingSelectedView';
 import { IconButton } from '@mui/material';
 import { ModalRegistrarSalon } from '../views/ModalRegistrarSalon';
 import { useUiStore } from '../../hooks/UseUIStore';
+import { useEffect } from 'react';
 
 export const RecyclePage = () => {
 
-  const { openDateModal } = useUiStore();
+
+
+  const { openSalonModal } = useUiStore();
 
   const onOpenModal = () => {
     console.log('Abriendo modal');
-    openDateModal();
+    openSalonModal();
   }
+
+  const peticionGet = async () => {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  useEffect(() => {
+    peticionGet();
+  }, [])
 
   return (
     <RecycleLayout>
 
+      
       <NothingSelectedView />
 
       <IconButton
@@ -35,7 +52,7 @@ export const RecyclePage = () => {
 
       </IconButton>
 
-      <ModalRegistrarSalon/>
+      <ModalRegistrarSalon />
 
     </RecycleLayout>
   )

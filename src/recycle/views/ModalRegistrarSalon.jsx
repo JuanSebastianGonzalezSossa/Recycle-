@@ -21,7 +21,7 @@ Modal.setAppElement('#root');
 
 export const ModalRegistrarSalon = () => {
 
-    const { isDateModalOpen, closeDateModal } = useUiStore();
+    const { isSalonModalOpen, closeSalonModal } = useUiStore();
 
     const { grado, dirGrado, cantEstudiantes, onInputChange } = useForm({
         grupo: '',
@@ -36,12 +36,12 @@ export const ModalRegistrarSalon = () => {
 
       const onCloseModal = () => {
         console.log('Cerrando modal');
-        closeDateModal();
+        closeSalonModal();
     }
 
     return (
         <Modal
-            isOpen={isDateModalOpen}
+            isOpen={isSalonModalOpen}
             onRequestClose={onCloseModal}
             // style={customStyles}
             className="modal"
@@ -103,7 +103,7 @@ export const ModalRegistrarSalon = () => {
                                     margin: '10px',
                                     fontSize: '18px',
                                 }}
-                                onClick={closeDateModal}
+                                onClick={closeSalonModal}
                             >
                                 Cancelar &nbsp;
                                 <Cancel />
@@ -119,7 +119,7 @@ export const ModalRegistrarSalon = () => {
                                     fontSize: '18px',
                                 }}
                                 type="submit"
-                                onClick={closeDateModal}
+                                onClick={closeSalonModal}
                             >
                                 Guardar &nbsp;
                                 <Save />

@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { Delete, Edit } from '@mui/icons-material';
+import { useUiStore } from '../../hooks/UseUIStore';
 
 export const TableEditRecycle = () => {
     function createData(name, calories, fat, carbs, protein) {
@@ -15,13 +16,20 @@ export const TableEditRecycle = () => {
         createData('Gingerbread', 356, 16.0, 49, 3.9),
     ];
 
-    const onEdit = () => {
-        console.log("Editando producto");
+    const { openEditModal, openDeleteModal, isDeleteModalOpen } = useUiStore();
+
+    const onOpenEditModal = () => {
+        console.log('Abriendo edit modal');
+        openEditModal();
     }
 
-    const onDelete = () => {
-        console.log("Borrando producto");
+    const onOpenDeleteModal = () => {
+        console.log('Abriendo Delete modal');
+        openDeleteModal();
+        console.log(isDeleteModalOpen)
     }
+
+
 
     return (
         <TableContainer component={Paper} sx={{ margin: 20 }} >
@@ -45,12 +53,12 @@ export const TableEditRecycle = () => {
                             <TableCell align="center">{row.carbs}</TableCell>
                             <TableCell align="center">
                                 <IconButton
-                                    onClick={onEdit}
+                                    onClick={onOpenEditModal}
                                 >
                                     <Edit></Edit>
                                 </IconButton>
                                 <IconButton
-                                    onClick={onDelete}
+                                    onClick={onOpenDeleteModal}
                                 >
                                     <Delete></Delete>
                                 </IconButton>

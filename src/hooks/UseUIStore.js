@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onCloseDateModal, onOpenDateModal } from '../store/ui/uiSlice';
+import { onOpenSalonModal, onCloseSalonModal, onOpenEditModal, onCloseEditModal, onOpenDeleteModal, onCloseDeleteModal } from '../store/ui/uiSlice';
 
 
 export const useUiStore = () => {
@@ -7,33 +7,57 @@ export const useUiStore = () => {
     const dispatch = useDispatch();
 
     const { 
-        isDateModalOpen
+        isSalonModalOpen
     } = useSelector( state => state.ui );
 
-    const openDateModal = () => {
-        dispatch( onOpenDateModal() )
+    const openSalonModal = () => {
+        dispatch( onOpenSalonModal() )
     }
 
-    const closeDateModal = () => {
-        dispatch( onCloseDateModal() )
+    const closeSalonModal = () => {
+        dispatch( onCloseSalonModal() )
     }
 
-    const toggleDateModal = () => {
-        (isDateModalOpen)
-            ? openDateModal()
-            : closeDateModal();
+    const { 
+        isEditModalOpen
+    } = useSelector( state => state.ui );
+
+    const openEditModal = () => {
+        dispatch( onOpenEditModal() )
     }
+
+    const closeEditModal = () => {
+        dispatch( onCloseEditModal() )
+    }
+
+    const { 
+        isDeleteModalOpen
+    } = useSelector( state => state.ui );
+
+    const openDeleteModal = () => {
+        dispatch( onOpenDeleteModal() )
+    }
+
+    const closeDeleteModal = () => {
+        dispatch( onCloseDeleteModal() )
+    }
+
 
 
 
     return {
         //* Propiedades
-        isDateModalOpen,
+        isSalonModalOpen,
+        isEditModalOpen,
+        isDeleteModalOpen,
 
         //* Métodos
-        closeDateModal,
-        openDateModal,
-        toggleDateModal,
+        openSalonModal,
+        closeSalonModal,
+        openEditModal,
+        closeEditModal,
+        openDeleteModal,
+        closeDeleteModal,
     }
 
 }

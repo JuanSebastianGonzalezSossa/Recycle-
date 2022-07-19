@@ -4,11 +4,13 @@ import { NothingSelectedView } from '../views/NothingSelectedView';
 import { IconButton } from '@mui/material';
 import { ModalRegistrarSalon } from '../views/ModalRegistrarSalon';
 import { useUiStore } from '../../hooks/UseUIStore';
-import { useEffect } from 'react';
+import { useFetch } from '../../hooks/UseFetch';
 
 export const RecyclePage = () => {
 
+  const { data, isLoading, hasError } = useFetch('https://www.breakingbadapi.com/api/quotes/1'); 
 
+  console.log({data, isLoading, hasError})
 
   const { openSalonModal } = useUiStore();
 
@@ -17,18 +19,18 @@ export const RecyclePage = () => {
     openSalonModal();
   }
 
-  const peticionGet = async () => {
-    await fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(error => {
-        console.log(error);
-      })
-  }
+  // const peticionGet = async () => {
+  //   await fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
+  //     .then(res => res.json())
+  //     .then(data => console.log(data))
+  //     .catch(error => {
+  //       console.log(error);
+  //     })
+  // }
 
-  useEffect(() => {
-    peticionGet();
-  }, [])
+  // useEffect(() => {
+  //   peticionGet();
+  // }, [])
 
   return (
     <RecycleLayout>
